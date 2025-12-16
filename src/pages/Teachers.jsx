@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Teachers() {
   const [data, setData] = useState([]);
@@ -28,6 +29,7 @@ export default function Teachers() {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {data.map((item) => (
+            <Link to={`/teachers/${item.id}`} key={item.id}>
             <div
               key={item.id}
               className="p-4 rounded-xl bg-gradient-to-br from-[#D4A8D6] to-[#FDF0F5] backdrop-blur-xl border border-white/20 shadow-[0_0_25px_rgba(255,90,200,0.5)] text-[#F7EEF5]"
@@ -47,6 +49,7 @@ export default function Teachers() {
 
               <p className="mt-3 font-bold">Profession: {item.profession}</p>
             </div>
+            </Link>
           ))}
         </div>
       )}
